@@ -22,7 +22,7 @@ class meawaddstu {
     }    
     fin.close();
     int tot = i;
-    FileOutputStream fout = new FileOutputStream("updmeaw.dat");
+    FileOutputStream fout = new FileOutputStream("student.dat");
     BufferedOutputStream bout = new BufferedOutputStream(fout);
     PrintStream pout = new PrintStream(bout);
     i = 0;
