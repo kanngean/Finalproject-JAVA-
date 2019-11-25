@@ -95,7 +95,7 @@ class updmeaw {
       } 
 		       else if (buf.equals("14") || buf.equals("esu")) 
 		      {
-		        editsubject();
+		        editsubjects();
 		        buf = " ";
 		      } 
 				       else if (buf.equals("15") || buf.equals("ere")) 
@@ -168,9 +168,9 @@ public static void register () throws IOException {
     FileOutputStream fout = new FileOutputStream("register.dat");
     BufferedOutputStream bout = new BufferedOutputStream(fout);
     PrintStream pout = new PrintStream(bout);
-    pout.println("01,BCOM314,A,1");
-    pout.println("02,BCOM314,A,1");
-    pout.println("03,BCOM314,A,1");
+    pout.println("590811001,BCOM314,A,1");
+    pout.println("590811002,BCOM314,A,1");
+    pout.println("590811003,BCOM314,A,1");
     System.out.println("Create 3 records : completely");
     pout.close();
   }
@@ -189,7 +189,7 @@ public static void register () throws IOException {
 // ======================================================
 public static void addnewstudent () throws IOException {
     BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-    String id,name,sex;
+    String id,name,sex; 
     System.out.print("Wait id : ");
     id = stdin.readLine();
     System.out.print("Wait name : ");
@@ -258,10 +258,10 @@ System.out.println("Add : completely");
 // ==========================
     public static void addnewregister () throws IOException {
     BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-	String registerid,subjectid,grade,sec;
-    System.out.print("Wait Register ID : ");
+    String registerid,subjectid,grade,sec;
+    System.out.print("Wait  ID : ");
     registerid = stdin.readLine();
-    System.out.print("Wait Registe Nrame : ");
+    System.out.print("Wait Subject id : ");
     subjectid = stdin.readLine();
     System.out.print("Wait Grade : ");
     grade = stdin.readLine();
@@ -296,9 +296,9 @@ System.out.println("Add : completely");
 // ======================================================
   public static void deletestudent () throws IOException {
     BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-    String bufid;
+    String id;
     System.out.print("Wait Student ID : ");
-    bufid = stdin.readLine();
+    id = stdin.readLine();
     String b;
     String ar[] = new String[100];
     FileReader fin = new FileReader("student.dat");
@@ -316,7 +316,7 @@ System.out.println("Add : completely");
     PrintStream pout = new PrintStream(bout);
     i = 0;
     while (i < tot) {      
-      if (bufid.equals(ar[i].substring(0,10))) {
+      if (id.equals(ar[i].substring(0,10))) {
         System.out.println("Delete : completely");
       } else {
         pout.println(ar[i]);
@@ -325,12 +325,12 @@ System.out.println("Add : completely");
     }
     pout.close();
   }
-// ======================================================
+  // ==========================
    public static void deletesubject () throws IOException {
     BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-    String bufid;
-    System.out.print("Wait Subject ID : ");
-    bufid = stdin.readLine();
+    String subjectid;
+    System.out.print("Wait Subjects ID : ");
+   subjectid = stdin.readLine();
     String b;
     String ar[] = new String[100];
     FileReader fin = new FileReader("subject.dat");
@@ -348,7 +348,7 @@ System.out.println("Add : completely");
     PrintStream pout = new PrintStream(bout);
     i = 0;
     while (i < tot) {      
-      if (bufid.equals(ar[i].substring(0,3))) {
+      if (subjectid.equals(ar[i].substring(0,3))) {
         System.out.println("Delete : completely");
       } else {
         pout.println(ar[i]);
@@ -392,12 +392,12 @@ System.out.println("Add : completely");
 // ===========================
  public static void editstudent () throws IOException {
     BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-    String studentid,studentname,sex;
-    System.out.print("Wait Student ID : ");
-    studentid = stdin.readLine();
-    System.out.print("Wait Name : ");
-    studentname = stdin.readLine();
-    System.out.print("Wait Sex : ");
+    String id,name,sex; 
+    System.out.print("Wait id : ");
+    id = stdin.readLine();
+    System.out.print("Wait name : ");
+    name = stdin.readLine();
+    System.out.print("Wait sex : ");
     sex = stdin.readLine();
     String b;
     String ar[] = new String[100];
@@ -416,8 +416,8 @@ System.out.println("Add : completely");
     PrintStream pout = new PrintStream(bout);
     i = 0;
     while (i < tot) {      
-      if (studentid.equals(ar[i].substring(0,10))) {
-        pout.println(studentid + "," + studentname + "," + sex);
+      if (id.equals(ar[i].substring(0,10))) {
+        pout.println(id + "," + name + "," + sex);
         System.out.println("Edit : completely");
       } else {
         pout.println(ar[i]);
@@ -427,14 +427,14 @@ System.out.println("Add : completely");
     pout.close();
   }
 // ==========================
-  public static void editsubject () throws IOException {
+  public static void editsubjects () throws IOException {
     BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-    String subjectid,subjectname,credit;
-    System.out.print("Wait Subject ID : ");
+    String subjectid,subjectname,credit; 
+    System.out.print("Wait subjectid : ");
     subjectid = stdin.readLine();
-    System.out.print("Wait Subject Name : ");
+    System.out.print("Wait subjectname : ");
     subjectname = stdin.readLine();
-    System.out.print("Wait Credit : ");
+    System.out.print("Wait credit : ");
     credit = stdin.readLine();
     String b;
     String ar[] = new String[100];
@@ -453,23 +453,23 @@ System.out.println("Add : completely");
     PrintStream pout = new PrintStream(bout);
     i = 0;
     while (i < tot) {      
-      if (subjectid.equals(ar[i].substring(0,3))) {
+      if (subjectid.equals(ar[i].substring(0,10))) {
         pout.println(subjectid + "," + subjectname + "," + credit);
         System.out.println("Edit : completely");
       } else {
         pout.println(ar[i]);
       }
-      i = i + 1;
+      i = i + 1;    
     }
     pout.close();
   }
 // ==========================
   public static void editregister () throws IOException {
     BufferedReader stdin = new BufferedReader(new InputStreamReader(System.in));
-    String registerid,subjectid,grade,sec;
-    System.out.print("Wait Register ID : ");
+   String registerid,subjectid,grade,sec;
+    System.out.print("Wait  ID : ");
     registerid = stdin.readLine();
-    System.out.print("Wait Registe Nrame : ");
+    System.out.print("Wait Subject id : ");
     subjectid = stdin.readLine();
     System.out.print("Wait Grade : ");
     grade = stdin.readLine();
